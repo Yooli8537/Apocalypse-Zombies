@@ -1,6 +1,7 @@
 package com.y_apocalypse_zombies;
 
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -23,13 +24,26 @@ public class InfectedApocalypseZombie extends BaseApocalypseZombie {
         return BaseApocalypseZombie.createAttributes();
     }
 
-    MobEffectInstance attackEffect = new MobEffectInstance(ModEffects.INFECTED_EFFECT, 7 * 20, 0, false, true, true);
+    int effectStrength = 0;
+    int effectDuration = 150;
 
     @Override
     public boolean doHurtTarget(ServerLevel serverLevel, Entity target) {
         boolean value = super.doHurtTarget(serverLevel, target);
+        Difficulty difficulty = serverLevel.getDifficulty();
+
         if (value && target instanceof LivingEntity livingTarget) {
-            livingTarget.addEffect(attackEffect);
+            if (serverLevel.random.nextInt(6) == 0) {
+                if (difficulty == Difficulty.HARD) {
+                    effectStrength = 3;
+                    effectDuration = 100;
+                } else if (difficulty == Difficulty.NORMAL) {
+                    effectStrength = 1;
+                    effectDuration = 130;
+                }
+                MobEffectInstance attackEffect = new MobEffectInstance(ModEffects.INFECTED_EFFECT, effectDuration * 20, effectStrength, false, true, true);
+                livingTarget.addEffect(attackEffect);
+            }
         }
         return value;
     }

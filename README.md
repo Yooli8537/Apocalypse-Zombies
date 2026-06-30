@@ -38,6 +38,11 @@ The Tank is a lot bulkier than the average zombie, which is both a benefit and d
 With increased Damage, Health and knockback, he's a force to be reckoned with.
 He also has a very high chance to summon reinforcements to aid him in battle.
 
+### Infected
+
+The Infected has an especially bad case of the Zombie infection, usually because he's been freshly mauled by a Horde.
+Getting attacked by the Infected has a chance to carry over this infection, dealing damage over a long time.
+
 ## Installation
 
 ### Dependencies
@@ -120,6 +125,14 @@ A tankier Tank isn't a bad thing to me.
 
 The Shield blocking an attack doesn't trigger the attack animation.
 Furthermore, the Rush from a Rusher isn't stopped when hitting a shield, leading to weird circling behavior.
+
+### Infected Zombie
+
+The Infected doesn't have a custom Model, Texture, Language Support or Natural Spawning and doesn't spawn with the Tank's Reinforcements.
+
+### Infected (Effect)
+
+Doesn't have an Icon.
 
 ## Planned Features
 
