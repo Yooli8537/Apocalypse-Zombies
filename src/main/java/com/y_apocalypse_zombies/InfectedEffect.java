@@ -16,8 +16,8 @@ public class InfectedEffect extends MobEffect {
 
     @Override
     public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
-        // Only applies damage every 45 Ticks
-        return duration % 45 == 0;
+        // Only applies damage every 150 Ticks
+        return duration % 150 == 0;
     }
 
     @Override
