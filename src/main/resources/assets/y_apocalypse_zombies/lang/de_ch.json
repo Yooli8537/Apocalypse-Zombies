@@ -2,5 +2,6 @@
   "entity.y_apocalypse_zombies.base_apocalypse_zombie": "Apokalypse Zombie",
   "entity.y_apocalypse_zombies.rusher_apocalypse_zombie": "Schnelle Zombie",
   "entity.y_apocalypse_zombies.tank_apocalypse_zombie": "Grosse Zombie",
-  "effect.y_apocalypse_zombies.infected_effect": "Infizierig"
+  "effect.y_apocalypse_zombies.infected_effect": "Infizierig",
+  "death.attack.infected": "%1$s isch a'd' Infizierig gstorbe"
 }
