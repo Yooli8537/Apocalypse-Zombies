@@ -1,0 +1,7 @@
+{
+  "entity.y_apocalypse_zombies.base_apocalypse_zombie": "Apokalypsen Zombie",
+  "entity.y_apocalypse_zombies.rusher_apocalypse_zombie": "Schneller Zombie",
+  "entity.y_apocalypse_zombies.tank_apocalypse_zombie": "Panzer Zombie",
+  "effect.y_apocalypse_zombies.infected_effect": "Infizierung",
+  "death.attack.infected": "%1$s ist an der Infektion gestorben"
+}
