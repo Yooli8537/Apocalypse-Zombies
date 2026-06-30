@@ -1,6 +1,10 @@
 package com.y_apocalypse_zombies;
 
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
@@ -18,7 +22,11 @@ public class InfectedEffect extends MobEffect {
 
     @Override
     public boolean applyEffectTick(ServerLevel level, LivingEntity entity, int amplifier) {
-        entity.hurtServer(level, level.damageSources().magic(), 2.0F + amplifier);
+        Holder<DamageType> infectedDamage = level.registryAccess()
+                .lookupOrThrow(Registries.DAMAGE_TYPE)
+                .getOrThrow(ModDamageTypes.INFECTED);
+
+        entity.hurtServer(level, new DamageSource(infectedDamage), 2.0F + amplifier);
         return super.applyEffectTick(level, entity, amplifier);
     }
 }
