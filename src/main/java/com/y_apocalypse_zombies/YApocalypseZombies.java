@@ -18,5 +18,7 @@ public class YApocalypseZombies implements ModInitializer {
         ModEntityTypes.registerYZombieAttributes();
         LOGGER.info("Initializing y_apocalypse_zombies Spawn Spawn Rules");
         ModEntitySpawns.addSpawns();
+        LOGGER.info("Initializing y_apocalypse_zombies Effects");
+        ModEffects.INFECTED_EFFECT.getClass();
     }
 }
