@@ -27,5 +27,10 @@ public class ModClient implements ClientModInitializer {
                 ModEntityTypes.RUSHER_APOCALYPSE_ZOMBIE_ENTITY_TYPE,
                 context -> new GeoEntityRenderer<>(context, ModEntityTypes.RUSHER_APOCALYPSE_ZOMBIE_ENTITY_TYPE)
         );
+
+        EntityRendererRegistry.register(
+                ModEntityTypes.INFECTED_APOCALYPSE_ZOMBIE_ENTITY_TYPE,
+                ZombieRenderer::new
+        );
     }
 }

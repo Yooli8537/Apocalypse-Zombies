@@ -34,6 +34,12 @@ public class ModEntityTypes {
                     .sized(0.6f, 1.7f)
     );
 
+    public static final EntityType<InfectedApocalypseZombie> INFECTED_APOCALYPSE_ZOMBIE_ENTITY_TYPE = register(
+            "infected_apocalypse_zombie",
+            EntityType.Builder.<InfectedApocalypseZombie>of(InfectedApocalypseZombie::new, MobCategory.MONSTER)
+                    .sized(0.6f, 1.95f)
+    );
+
     // Creates a ResourceKey and adds it to Minecraft's Registry to allow the Zombies to appear in-game.
     private static <T extends Entity> EntityType<T> register(String name, EntityType.Builder<T> builder) {
         ResourceKey<EntityType<?>> key = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(YApocalypseZombies.MOD_ID, name));
@@ -49,5 +55,6 @@ public class ModEntityTypes {
         FabricDefaultAttributeRegistry.register(BASE_APOCALYPSE_ZOMBIE_ENTITY_TYPE, BaseApocalypseZombie.createAttributes());
         FabricDefaultAttributeRegistry.register(TANK_APOCALYPSE_ZOMBIE_ENTITY_TYPE, TankApocalypseZombie.createAttributes());
         FabricDefaultAttributeRegistry.register(RUSHER_APOCALYPSE_ZOMBIE_ENTITY_TYPE, RusherApocalypseZombie.createAttributes());
+        FabricDefaultAttributeRegistry.register(INFECTED_APOCALYPSE_ZOMBIE_ENTITY_TYPE, InfectedApocalypseZombie.createAttributes());
     }
 }
