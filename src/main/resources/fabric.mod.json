@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "y_apocalypse_zombies",
+  "version": "${version}",
+  "name": "[Y] Apocalypse Zombies",
+  "description": "Zombies straight out of the Apocalypse. Part of my Apocalypse Modpack.",
+  "authors": [
+    "Yooli8537"
+  ],
+  "contact": {
+    "sources": "https://github.com/Yooli8537/Apocalypse-Zombies",
+    "homepage": "https://github.com/Yooli8537/Apocalypse-Zombies?tab=License-1-ov-file",
+    "issues": "https://github.com/Yooli8537/Apocalypse-Zombies/issues"
+  },
+  "license": "Custom; Visit Website to find License.",
+  "icon": "assets/y_apocalypse_zombies/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.y_apocalypse_zombies.YApocalypseZombies"
+    ],
+    "client": [
+      "com.y_apocalypse_zombies.client.ModClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.2",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*",
+    "geckolib": ">=5.4.5"
+  }
+}
