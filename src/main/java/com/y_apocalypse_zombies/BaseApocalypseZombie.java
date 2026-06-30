@@ -12,6 +12,8 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.zombie.Zombie;
+import net.minecraft.world.entity.npc.villager.Villager;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.ServerLevelAccessor;
@@ -54,6 +56,23 @@ public class BaseApocalypseZombie extends Zombie {
     // Reinforcement Spawning
     // Prevents Base Reinforcements from spawning when other Zombies which Extend this one are hurt
     protected boolean spawnBaseReinforcements = true;
+
+    @Override
+    public boolean killedEntity(ServerLevel serverLevel, LivingEntity killed, DamageSource damageSource) {
+        if (killed instanceof Villager || killed instanceof Player) {
+            InfectedApocalypseZombie infected = ModEntityTypes.INFECTED_APOCALYPSE_ZOMBIE_ENTITY_TYPE
+                    .create(serverLevel, EntitySpawnReason.CONVERSION);
+
+            if (infected != null) {
+                infected.setPos(killed.getX(), killed.getY(), killed.getZ());
+                infected.setYRot(killed.getYRot());
+                serverLevel.addFreshEntity(infected);
+                killed.discard();
+            }
+            return true;
+        }
+        return super.killedEntity(serverLevel, killed, damageSource);
+    }
 
     // Functions which are activated when taking Damage
     @Override
@@ -107,7 +126,7 @@ public class BaseApocalypseZombie extends Zombie {
     }
 
     // Custom Spawn Rules to allow Daytime spawning
-    public static boolean checkSpawnRules(EntityType<? extends Monster>entityType, ServerLevelAccessor serverLevel, EntitySpawnReason entitySpawnReason, BlockPos pos, RandomSource random) {
+    public static boolean checkSpawnRules(EntityType<? extends Monster> entityType, ServerLevelAccessor serverLevel, EntitySpawnReason entitySpawnReason, BlockPos pos, RandomSource random) {
         int blockLight = serverLevel.getBrightness(LightLayer.BLOCK, pos);
         return blockLight < 11 && serverLevel.getBlockState(pos.below()).isSolid();
     }
@@ -119,6 +138,7 @@ public class BaseApocalypseZombie extends Zombie {
     public void setIsReinforcement(boolean value) {
         this.isReinforcement = value;
     }
+
     public boolean isReinforcement() {
         return this.isReinforcement;
     }
