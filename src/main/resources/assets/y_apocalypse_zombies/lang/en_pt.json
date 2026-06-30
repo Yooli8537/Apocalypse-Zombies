@@ -1,5 +1,6 @@
 {
   "entity.y_apocalypse_zombies.base_apocalypse_zombie": "Infected Sailor",
   "entity.y_apocalypse_zombies.rusher_apocalypse_zombie": "Infected speedy Sailor",
-  "entity.y_apocalypse_zombies.tank_apocalypse_zombie": "Infected Mountain of Muscle"
+  "entity.y_apocalypse_zombies.tank_apocalypse_zombie": "Infected Mountain of Muscle",
+  "effect.y_apocalypse_zombies.infected_effect": "Undead Plague"
 }
