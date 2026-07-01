@@ -30,7 +30,7 @@ public class ModClient implements ClientModInitializer {
 
         EntityRendererRegistry.register(
                 ModEntityTypes.INFECTED_APOCALYPSE_ZOMBIE_ENTITY_TYPE,
-                ZombieRenderer::new
+                context -> new GeoEntityRenderer<>(context, ModEntityTypes.INFECTED_APOCALYPSE_ZOMBIE_ENTITY_TYPE)
         );
     }
 }

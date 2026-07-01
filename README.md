@@ -117,10 +117,6 @@ Items held by the Zombies are invisible, leading to very unfair gameplay.
 The Shield blocking an attack doesn't trigger the attack animation.
 Furthermore, the Rush from a Rusher isn't stopped when hitting a shield, leading to weird circling behavior.
 
-### Infected Zombie
-
-The Infected doesn't have a custom Model, Texture, Language Support or Natural Spawning and doesn't spawn with the Tank's Reinforcements.
-
 ### Infected (Effect)
 
 Dying to the Infected Effect sometimes triggers *death.attack.infected.player* (or something like that) instead of the intended death message.

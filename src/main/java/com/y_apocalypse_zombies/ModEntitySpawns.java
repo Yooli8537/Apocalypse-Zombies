@@ -20,7 +20,8 @@ public class ModEntitySpawns {
     private static final List<SpawnEntry> ENTITIES = List.of(
             new SpawnEntry(ModEntityTypes.BASE_APOCALYPSE_ZOMBIE_ENTITY_TYPE, 320, 2, 7),
             new SpawnEntry(ModEntityTypes.RUSHER_APOCALYPSE_ZOMBIE_ENTITY_TYPE, 180, 1, 4),
-            new SpawnEntry(ModEntityTypes.TANK_APOCALYPSE_ZOMBIE_ENTITY_TYPE, 100, 1, 2)
+            new SpawnEntry(ModEntityTypes.TANK_APOCALYPSE_ZOMBIE_ENTITY_TYPE, 100, 1, 2),
+            new SpawnEntry(ModEntityTypes.INFECTED_APOCALYPSE_ZOMBIE_ENTITY_TYPE, 30, 1, 3)
     );
 
     // Registers Spawn Places

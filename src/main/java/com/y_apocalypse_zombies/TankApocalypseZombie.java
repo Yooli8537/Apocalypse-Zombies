@@ -133,8 +133,12 @@ public class TankApocalypseZombie extends BaseApocalypseZombie implements GeoEnt
                     BaseApocalypseZombie reinforcement = ModEntityTypes.TANK_APOCALYPSE_ZOMBIE_ENTITY_TYPE
                             .create(serverLevel, EntitySpawnReason.REINFORCEMENT);
                     verifyReinforcement(serverLevel, reinforcement);
-                } else if (reinforcementPercent > 5 && reinforcementPercent < 40) {
+                } else if (reinforcementPercent > 5 && reinforcementPercent < 35) {
                     BaseApocalypseZombie reinforcement = ModEntityTypes.RUSHER_APOCALYPSE_ZOMBIE_ENTITY_TYPE
+                            .create(serverLevel, EntitySpawnReason.REINFORCEMENT);
+                    verifyReinforcement(serverLevel, reinforcement);
+                } else if (reinforcementPercent > 35 && reinforcementPercent < 50) {
+                    BaseApocalypseZombie reinforcement = ModEntityTypes.INFECTED_APOCALYPSE_ZOMBIE_ENTITY_TYPE
                             .create(serverLevel, EntitySpawnReason.REINFORCEMENT);
                     verifyReinforcement(serverLevel, reinforcement);
                 } else {
