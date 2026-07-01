@@ -123,6 +123,12 @@ Furthermore, the Rush from a Rusher isn't stopped when hitting a shield, leading
 
 Dying to the Infected Effect sometimes triggers *death.attack.infected.player* (or something like that) instead of the intended death message.
 
+Dying to the Infected Effect doesn't zombify the Entity.
+
+### Baby Villager Conversion Issue
+
+Baby Villagers turn into adult Infected Zombies. Half-intentional since these zombies aren't supposed to spawn as babies, but I'll make an exception for this case.
+
 ### Reinforcement Spawning
 
 Reinforcements don't check for Water and can thus spawn in Water and be completely useless, just sinking to the bottom.
@@ -155,12 +161,6 @@ This is obviously unintended and will be fixed at some point.
 
 All the Zombies should be able to be cured, as they're all obviously people.
 Curing them will turn them into regular Villagers.
-
-### Infection
-
-When a Villager is killed, he should convert to one of the Apocalypse Zombies
-instead of just becoming a regular Zombie Villager.
-I may implement a brand-new Class of Zombie for this so that the iconic Villager Nose stays with them.
 
 ### Pillager Infection
 
