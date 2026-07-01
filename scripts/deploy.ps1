@@ -4,6 +4,7 @@ Write-Host "Deploying Mod to Modrinth Instance..." -ForegroundColor Cyan
 
 # Path to test instance
 $testInstanceModPath = "$env:APPDATA\ModrinthApp\profiles\Mod Environment\mods"
+$exportFolderPath = "$env:HOMEPATH\Documents\Modrinth_Exports"
 
 if (!(Test-Path $testInstanceModPath)) {
     Write-Host "Couldn't find Modrinth Instance." -ForegroundColor Red
@@ -30,4 +31,5 @@ Get-ChildItem $testInstanceModPath -Filter "y_apocalypse_zombies*.jar" |
 # Places .jar file
 Write-Host "Placing new Mod version..." -ForegroundColor Cyan
 Copy-Item $jar.FullName $testInstanceModPath -Force
+Copy-Item $jar.FullName $exportFolderPath -Force
 Write-Host "Successfully placed new Mod version in Modrinth Instance" -ForegroundColor Green
