@@ -10,15 +10,32 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.zombie.Zombie;
 import net.minecraft.world.level.Level;
+import software.bernie.geckolib.animatable.GeoEntity;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animatable.manager.AnimatableManager;
+import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animation.RawAnimation;
+import software.bernie.geckolib.animation.object.PlayState;
+import software.bernie.geckolib.animation.state.AnimationTest;
+import software.bernie.geckolib.util.GeckoLibUtil;
 
 // This Zombie spawns whenever a regular villager is converted.
 // He has a higher aggression towards villagers.
-public class InfectedApocalypseZombie extends BaseApocalypseZombie {
+public class InfectedApocalypseZombie extends BaseApocalypseZombie implements GeoEntity {
     public InfectedApocalypseZombie(EntityType<? extends Zombie> entityType, Level world) {
         super(entityType, world);
 
         this.xpReward = 4;
         this.spawnBaseReinforcements = false;
+    }
+
+    // Cache required by GeckoLib
+    private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
+
+    // Required function for GeckoLib to function, gives GeckoLib the entity's Cache
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return geoCache;
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -30,6 +47,34 @@ public class InfectedApocalypseZombie extends BaseApocalypseZombie {
                 .add(Attributes.ATTACK_KNOCKBACK, 0.1);
     }
 
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<>("idle", 2, this::idleAnimController));
+        controllers.add(new AnimationController<>("walk", 2, this::walkAnimController));
+        controllers.add(new AnimationController<>("attack", 0, animTest -> PlayState.STOP)
+                .triggerableAnim("attack", RawAnimation.begin().thenPlay("attack")));
+    }
+
+    // Idle Animation
+    protected PlayState idleAnimController(AnimationTest<RusherApocalypseZombie> rusher) {
+        if (!rusher.isMoving()) {
+            return rusher.setAndContinue(RawAnimation.begin().thenLoop("idle_loop"));
+        }
+        // Stops the animation
+        rusher.controller().reset();
+        return PlayState.STOP;
+    }
+
+    // Normal walking
+    protected PlayState walkAnimController(AnimationTest<RusherApocalypseZombie> rusher) {
+        if (rusher.isMoving()) {
+            return rusher.setAndContinue(RawAnimation.begin().thenLoop("walk_loop"));
+        }
+        // Stops the animation
+        rusher.controller().reset();
+        return PlayState.STOP;
+    }
+
+    // Settings for the applied Effect
     int effectStrength = 0;
     int effectDuration = 150;
 
@@ -38,18 +83,26 @@ public class InfectedApocalypseZombie extends BaseApocalypseZombie {
         boolean value = super.doHurtTarget(serverLevel, target);
         Difficulty difficulty = serverLevel.getDifficulty();
 
-        if (value && target instanceof LivingEntity livingTarget) {
-            if (serverLevel.random.nextInt(6) == 0) {
-                if (difficulty == Difficulty.HARD) {
-                    effectStrength = 3;
-                    effectDuration = 100;
-                } else if (difficulty == Difficulty.NORMAL) {
-                    effectStrength = 1;
-                    effectDuration = 130;
+        if (value) {
+            this.triggerAnim("attack", "attack");
+            // Applies effect to target
+            if (target instanceof LivingEntity livingTarget) {
+                if (serverLevel.random.nextInt(6) == 0) {
+                    if (difficulty == Difficulty.HARD) {
+                        effectStrength = 3;
+                        effectDuration = 100;
+                    } else if (difficulty == Difficulty.NORMAL) {
+                        effectStrength = 1;
+                        effectDuration = 130;
+                    } else {
+                        effectStrength = 0;
+                        effectDuration = 150;
+                    }
+                    MobEffectInstance attackEffect = new MobEffectInstance(ModEffects.INFECTED_EFFECT, effectDuration * 20, effectStrength, false, true, true);
+                    livingTarget.addEffect(attackEffect);
                 }
-                MobEffectInstance attackEffect = new MobEffectInstance(ModEffects.INFECTED_EFFECT, effectDuration * 20, effectStrength, false, true, true);
-                livingTarget.addEffect(attackEffect);
             }
+        } else if (value) {
         }
         return value;
     }
