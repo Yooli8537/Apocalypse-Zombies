@@ -14,7 +14,6 @@ A Minecraft Mod which adds new Zombie Variations made for a future Zombie Apocal
   - [Manual Install](#manual-install)
 - [Running the Project directly from an IDE / CLI](#running-the-project-directly-from-an-ide--cli)
 - [Scripts](#scripts)
-- [License](#license)
 - [Known Issues](#known-issues)
 - [Planned Features](#planned-features)
 
@@ -92,24 +91,6 @@ cd Abschlussprojekt_2025_API-1_ebholi_Minecraft-Zombie-Mod
 This project includes three scripts to aid development.
 If you want to install the scripts, you can download them from this [repository](https://github.com/Yooli8537/Minecraft-Fabric-1.21.11-Development-Scripts).
 
-## License
-
-Copyright © 2026 Yooli8537
-
-Permission is granted to use, copy, modify, and distribute this software for personal, educational or non-commercial purposes.
-
-Playing this software, streaming it, recording it, or creating monetized content (such as videos, livestreams, or articles) that features or showcases this software is explicitly permitted and does not require separate permission, even if such content generates revenue for its creator.
-
-Redistribution of this software, in original or modified form - including but not limited to reuploading, repackaging or selling copies - requires prior written permission from the copyright holder.
-This applies whenever the redistribution itself is monetized.
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-This license shall be governed by the laws of Switzerland.
-
 ## Known Issues
 
 ### Base Zombie Texture
@@ -126,6 +107,10 @@ Right now, Armor doesn't render on the custom Zombie's models.
 Armor should be rendered for the Rusher to avoid confusion. Due to the Tank's more complex Model and it's nature,
 I likely won't add Armor support for it as it fits the identity of the Tank.
 A tankier Tank isn't a bad thing to me.
+
+### Held Items are invisible
+
+Items held by the Zombies are invisible, leading to very unfair gameplay.
 
 ### Shield Bugs
 
