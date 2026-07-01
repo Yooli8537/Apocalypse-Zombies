@@ -163,6 +163,9 @@ Curing them will turn them into regular Villagers.
 When a Villager is killed, he should convert to one of the Apocalypse Zombies
 instead of just becoming a regular Zombie Villager.
 I may implement a brand-new Class of Zombie for this so that the iconic Villager Nose stays with them.
+
+### Pillager Infection
+
 Pillagers should also be infected and converted into the ranged Zombie version.
 
 ### Advanced AI
