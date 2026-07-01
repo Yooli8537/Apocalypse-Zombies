@@ -125,6 +125,10 @@ The Infected doesn't have a custom Model, Texture, Language Support or Natural S
 
 Dying to the Infected Effect sometimes triggers *death.attack.infected.player* (or something like that) instead of the intended death message.
 
+### Reinforcement Spawning
+
+Reinforcements don't check for Water and can thus spawn in Water and be completely useless, just sinking to the bottom.
+
 ## Planned Features
 
 ### Randomized Textures
