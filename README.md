@@ -138,7 +138,7 @@ The Infected doesn't have a custom Model, Texture, Language Support or Natural S
 
 ### Infected (Effect)
 
-Doesn't have an Icon.
+Dying to the Infected Effect sometimes triggers *death.attack.infected.player* (or something like that) instead of the intended death message.
 
 ## Planned Features
 
