@@ -66,14 +66,14 @@ Download the project from [Modrinth](https://modrinth.com/mod/y-apocalypse-zombi
 2. Run these commands:
 
 ``` PowerShell
-git clone https://github.com/ebholi/Abschlussprojekt_2025_API-1_ebholi_Minecraft-Zombie-Mod
+git clone https://github.com/Yooli8537/Apocalypse-Zombies
 
-cd Abschlussprojekt_2025_API-1_ebholi_Minecraft-Zombie-Mod
+cd Apocalypse-Zombies
 
 .\scripts\build.ps1
 ```
 
-3. Navigate to this directory: `Abschlussprojekt_2025_API-1_ebholi_Minecraft-Zombie-Mod\build\libs\`
+3. Navigate to this directory: `Apocalypse-Zombies\build\libs\`
 4. Copy the `y_apocalypse_zombies-X.X.X.jar` file and paste it into your Minecraft Launcher's `mods/` folder.
 
 ## Running the Project directly from an IDE / CLI
@@ -81,9 +81,9 @@ cd Abschlussprojekt_2025_API-1_ebholi_Minecraft-Zombie-Mod
 In order to run the project from an IDE, use the following commands:
 
 ``` PowerShell
-git clone https://github.com/ebholi/Abschlussprojekt_2025_API-1_ebholi_Minecraft-Zombie-Mod
+git clone https://github.com/Yooli8537/Apocalypse-Zombies
 
-cd Abschlussprojekt_2025_API-1_ebholi_Minecraft-Zombie-Mod
+cd Apocalypse-Zombies
 
 .\scripts\runClient.ps1
 ```
