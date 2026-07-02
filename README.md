@@ -8,6 +8,7 @@ A Minecraft Mod which adds new Zombie Variations made for a future Zombie Apocal
   - [Base Zombie](#base-zombie)
   - [Rusher](#rusher)
   - [Tank](#tank)
+  - [Infected](#infected)
 - [Installation](#installation)
   - [Dependencies](#dependencies)
   - [Modrinth](#modrinth)
