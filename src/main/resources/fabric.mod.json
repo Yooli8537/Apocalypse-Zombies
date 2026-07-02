@@ -17,7 +17,8 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.y_apocalypse_zombies.YApocalypseZombies"
+      "com.y_apocalypse_zombies.YApocalypseZombies",
+      "com.y_apocalypse_zombies.ModEffects"
     ],
     "client": [
       "com.y_apocalypse_zombies.client.ModClient"

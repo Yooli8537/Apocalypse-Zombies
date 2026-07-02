@@ -10,6 +10,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.animal.golem.IronGolem;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.zombie.Zombie;
 import net.minecraft.world.entity.npc.villager.Villager;
@@ -53,15 +54,20 @@ public class BaseApocalypseZombie extends Zombie {
                 .add(Attributes.WATER_MOVEMENT_EFFICIENCY, 0);
     }
 
-    // Reinforcement Spawning
-    // Prevents Base Reinforcements from spawning when other Zombies which Extend this one are hurt
-    protected boolean spawnBaseReinforcements = true;
+    public static LivingEntity infectedSpawner(ServerLevel serverLevel, LivingEntity killed) {
+        if (killed instanceof IronGolem) {
+            return ModEntityTypes.TANK_APOCALYPSE_ZOMBIE_ENTITY_TYPE
+                    .create(serverLevel, EntitySpawnReason.CONVERSION);
+        } else {
+            return ModEntityTypes.INFECTED_APOCALYPSE_ZOMBIE_ENTITY_TYPE
+                    .create(serverLevel, EntitySpawnReason.CONVERSION);
+        }
+    }
 
     @Override
     public boolean killedEntity(ServerLevel serverLevel, LivingEntity killed, DamageSource damageSource) {
-        if (killed instanceof Villager || killed instanceof Player) {
-            InfectedApocalypseZombie infected = ModEntityTypes.INFECTED_APOCALYPSE_ZOMBIE_ENTITY_TYPE
-                    .create(serverLevel, EntitySpawnReason.CONVERSION);
+        if (killed instanceof Villager || killed instanceof Player || killed instanceof IronGolem) {
+            LivingEntity infected = infectedSpawner(serverLevel, killed);
 
             if (infected != null) {
                 infected.setPos(killed.getX(), killed.getY(), killed.getZ());
@@ -73,6 +79,10 @@ public class BaseApocalypseZombie extends Zombie {
         }
         return super.killedEntity(serverLevel, killed, damageSource);
     }
+
+    // Reinforcement Spawning
+    // Prevents Base Reinforcements from spawning when other Zombies which Extend this one are hurt
+    protected boolean spawnBaseReinforcements = true;
 
     // Functions which are activated when taking Damage
     @Override
